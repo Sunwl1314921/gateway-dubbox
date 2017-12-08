@@ -6,6 +6,7 @@ package com.aldb.gateway.core.support;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -40,7 +41,6 @@ import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.impl.io.DefaultHttpRequestWriterFactory;
 import org.apache.http.util.EntityUtils;
 
-import com.aldb.gateway.common.util.CommonCodeConstants;
 import com.aldb.gateway.core.OpenApiHttpClientService;
 
 /**
@@ -139,16 +139,17 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
     }
 
     @Override
-    public String doHttpsPost(String url, String reqData, String contentType, String traceId) {
-        return doPost(url, reqData, contentType, traceId);
+    public String doHttpsPost(String url, Map<String,String> headParams,String reqData) {
+        return doPost(url, headParams,reqData);
     }
 
     @Override
-    public String doPost(String url, String reqData, String contentType, String traceId) {
+    public String doPost(String url, Map<String,String> headParams,String reqData) {
         String body = "";
         org.apache.http.client.methods.HttpPost httpPost = new org.apache.http.client.methods.HttpPost(url);
-        httpPost.setHeader("Content-type", contentType);
-        httpPost.setHeader(CommonCodeConstants.TRACE_ID, traceId);
+        for(Map.Entry<String, String> entry:headParams.entrySet()) {
+            httpPost.setHeader(entry.getKey(), entry.getValue());
+        }
         httpPost.setEntity(new StringEntity(reqData, "utf-8"));
         try {
             // 执行请求操作，并拿到结果（同步阻塞）
@@ -174,11 +175,13 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
 
     
     @Override
-    public String doGet(String webUrl, String traceId) {
+    public String doGet(String webUrl,Map<String,String> headParams) {
         logger.info(String.format("run doGet method,weburl=%s", webUrl));
         String body = "";
         org.apache.http.client.methods.HttpGet httpGet = new org.apache.http.client.methods.HttpGet(webUrl);
-        httpGet.setHeader(CommonCodeConstants.TRACE_ID, traceId);
+        for(Map.Entry<String, String> entry:headParams.entrySet()) {
+            httpGet.setHeader(entry.getKey(), entry.getValue());
+        }
         try {
             CloseableHttpResponse response = getHttpClient().execute(httpGet);
             HttpEntity entity = response.getEntity();
@@ -200,13 +203,13 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
     }
 
     @Override
-    public String doGet(String webUrl, Map<String, String> paramMap, String traceId) {
+    public String doGet(String webUrl,Map<String,String> headParams, Map<String, String> paramMap) {
         logger.info(String.format("run doGet method,weburl=%s", webUrl));
         String url = webUrl;
         // 设置编码格式
         String queryString = createLinkString(paramMap);
         url = url + "?" + queryString;
-        return doGet(url, traceId);
+        return doGet(url, headParams);
     }
 
     /**
@@ -234,20 +237,16 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
         return prestr;
     }
 
-public static void main(String args[]){
-     OpenApiHttpClientServiceImpl p=new OpenApiHttpClientServiceImpl();
-     p.init();
-     System.out.println(p.doHttpsGet("https://www.baidu.com/","110"));
-    }
+
     @Override
-    public String doHttpsGet(String webUrl, String traceId) { // https 协议
-        return doGet(webUrl, traceId);
+    public String doHttpsGet(String webUrl, Map<String,String> headParams) { // https 协议
+        return doGet(webUrl, headParams);
     }
 
     @Override
-    public String doHttpsGet(String webUrl, Map<String, String> paramMap, String traceId) {
+    public String doHttpsGet(String webUrl,Map<String,String> headParams, Map<String, String> paramMap) {
 
-        return doGet(webUrl, paramMap, traceId);
+        return doGet(webUrl, headParams,paramMap);
     }
 
     /*

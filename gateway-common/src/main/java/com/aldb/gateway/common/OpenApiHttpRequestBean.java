@@ -24,22 +24,34 @@ public class OpenApiHttpRequestBean implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    private Map<String, String> reqHeader;//
-    private String requestUrl;
     
-    private String operationType;//
+    /*
+     * 本gateway,主要是为代理dubbox的restful服务，从而完成nginx upstream功能中的分流作用，所以
+     * 只需要进行一次url重写并内部重定向的功能，所以只需要如下参数
+     */
+    private String requestMethod;// 请求方法
+    private String operationType;// 请求操作类型
+  
+    private String requestUrl;  // 请求行
+    private Map<String, String> reqHeader;// 请求头
+    private String serviceReqData; // 请求体
+    
+    
+ 
 
-    private String clientAddr; //
-    private String localAddr;//
-    private int localPort;//
 
+  
+//------------------以下参数暂时不用
     private Map<String, String> thdApiUrlParams;//
-    private String serviceReqData; //
-    private String requestMethod;
 
     private Map<String, String> serviceGetReqData; //
     private String queryString; //
 
+    
+    
+    private String clientAddr; // 客户端地址
+    private String localAddr;// 本地地址
+    private int localPort;// 本地端口号
     private Date requestTime; //
     private Date responseTime;//
     private Long elapsedTime;//
@@ -59,7 +71,6 @@ public class OpenApiHttpRequestBean implements Serializable {
     private String sign;
     private String deviceToken;
     private String userToken;
-
     private String format;
 
     // private String request_data;
@@ -233,6 +244,10 @@ public class OpenApiHttpRequestBean implements Serializable {
     }
 
     public void setTraceId(String traceId) {
+        if (reqHeader == null) {
+            reqHeader = new HashMap<String, String>();
+        }
+        reqHeader.put("traceId", traceId);
         this.traceId = traceId;
     }
 
@@ -300,14 +315,14 @@ public class OpenApiHttpRequestBean implements Serializable {
     }
 
     public String getRequestUrl() {
-		return requestUrl;
-	}
+        return requestUrl;
+    }
 
-	public void setRequestUrl(String requestUrl) {
-		this.requestUrl = requestUrl;
-	}
+    public void setRequestUrl(String requestUrl) {
+        this.requestUrl = requestUrl;
+    }
 
-	@Override
+    @Override
     public String toString() {
         return JSON.toJSONString(this);
     }

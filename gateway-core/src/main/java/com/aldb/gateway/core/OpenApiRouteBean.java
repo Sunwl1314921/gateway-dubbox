@@ -13,7 +13,11 @@ import java.util.Properties;
  */
 public class OpenApiRouteBean implements Serializable{
 
-    private String traceId; // 内部定义的请求id
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7449525356183089832L;
+    
     private String requestUrl;
     
     private String targetUrl;
@@ -99,13 +103,7 @@ public class OpenApiRouteBean implements Serializable{
         this.operationType = operationType;
     }
 
-    public String getTraceId() {
-        return traceId;
-    }
-
-    public void setTraceId(String traceId) {
-        this.traceId = traceId;
-    }
+  
 
     public String getApiId() {
         return apiId;

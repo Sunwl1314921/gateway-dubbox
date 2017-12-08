@@ -82,7 +82,8 @@ import com.aldb.gateway.core.OpenApiHttpClientService;
  * @author sunff
  * 
  */
-public class OpenApiHttpAsynClientServiceImpl implements OpenApiHttpClientService {
+public class OpenApiHttpAsynClientServiceImpl //implements OpenApiHttpClientService 
+{
 
     public static void main(String args[]) {
         OpenApiHttpAsynClientServiceImpl p = new OpenApiHttpAsynClientServiceImpl();
@@ -349,7 +350,7 @@ public class OpenApiHttpAsynClientServiceImpl implements OpenApiHttpClientServic
 
     }
 
-    @Override
+   // @Override
     public String doGet(String webUrl, String traceId) {
 
         final HttpGet httpget = new HttpGet(webUrl);
@@ -392,7 +393,7 @@ public class OpenApiHttpAsynClientServiceImpl implements OpenApiHttpClientServic
 
     }
 
-    @Override
+   /* @Override
     public String doGet(String webUrl, Map<String, String> paramMap, String traceId) {
         // TODO Auto-generated method stub
         return null;
@@ -420,5 +421,5 @@ public class OpenApiHttpAsynClientServiceImpl implements OpenApiHttpClientServic
     public String doPost(String url, String reqData, String contentType, String traceId) {
         // TODO Auto-generated method stub
         return null;
-    }
+    }*/
 }

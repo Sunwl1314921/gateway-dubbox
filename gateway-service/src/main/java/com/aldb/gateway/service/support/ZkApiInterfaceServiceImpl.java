@@ -11,10 +11,10 @@ import org.I0Itec.zkclient.ZkClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.aldb.gateway.common.entity.ApiInterface;
 import com.aldb.gateway.common.util.CommonCodeConstants;
 import com.aldb.gateway.service.ApiInterfaceService;
 import com.aldb.gateway.service.LoadBalanceService;
+import com.aldb.gateway.service.entity.ApiInterface;
 
 /**
  * @author Administrator
@@ -78,7 +78,7 @@ public class ZkApiInterfaceServiceImpl implements ApiInterfaceService {
         this.zkServers = zkServers;
     }
 
-    private static final ConcurrentHashMap<String, List<String>> hosts = new ConcurrentHashMap<String, List<String>>();
+    private static final ConcurrentHashMap<String/*被请求服务的context*/, List<String>> hosts = new ConcurrentHashMap<String, List<String>>();
 
     private void runaway(final ZkClient zkClient, final String path) {
         zkClient.unsubscribeAll();

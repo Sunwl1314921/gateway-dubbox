@@ -13,16 +13,22 @@ import java.util.Map;
 public interface OpenApiHttpClientService {
 
     // get请求
-    public String doGet(String webUrl,String traceId);
-    public String doGet(String webUrl, Map<String,String> paramMap,String traceId);
-    public String doHttpsGet(String webUrl,String traceId);
+    public String doGet(String webUrl,Map<String,String> headParams);
+    public String doGet(String webUrl,Map<String,String> headParams, Map<String,String> paramMap);
+    public String doHttpsGet(String webUrl,Map<String,String> headParams);
     
-    public String doHttpsGet(String webUrl, Map<String,String> paramMap,String traceId);
+    public String doHttpsGet(String webUrl, Map<String,String> headParams,Map<String,String> paramMap);
     
 
-    public String doHttpsPost(String url, String content, String contentType,String traceId);
+    
+    //post请求
+    public String doHttpsPost(String url,Map<String,String> headParams, String requestData);
 
-    public String doPost(String url, String reqData, String contentType,String traceId);
+   // public String doPost(String url, String reqData, String contentType,String traceId);
+    
+    
+    public String doPost(String url,Map<String,String> headParams,String requestData);
+    
     
     /*public Map<String, String> HttpGet(String webUrl, Map paramMap);
 
