@@ -60,7 +60,7 @@ public class StringUtil {
 
     public static String[] parseStringToArray(String s, String delim) {
         StringTokenizer st = new StringTokenizer(s, delim);
-        List v = new ArrayList();
+        List<String> v = new ArrayList<>();
         while (st.hasMoreElements()) {
             String tmp = st.nextToken();
             v.add(tmp);
@@ -70,9 +70,9 @@ public class StringUtil {
 
     public static String[] parseStringToArray2(String s, String delim) {
 
-        List v = new ArrayList();
+        List<String> v = new ArrayList<>();
 
-        String tmp = s;
+     //   String tmp = s;
         int startIdx = 0;
         while (s != null && s.indexOf(delim) != -1) {
             int idx = s.indexOf(delim);
@@ -157,7 +157,7 @@ public class StringUtil {
                 break;
             iIndexNum++;
         }
-        Vector vStore = new Vector();
+        Vector<String> vStore = new Vector<>();
         int i = 0;
         String sub = null;
         for (i = 0; i < iIndexNum + 1; i++) {
@@ -173,7 +173,7 @@ public class StringUtil {
         if (vStore.size() <= 0)
             return null;
         saRet = new String[vStore.size()];
-        Enumeration e = vStore.elements();
+        Enumeration<String> e = vStore.elements();
         for (i = 0; e.hasMoreElements(); i++)
             saRet[i] = (String) e.nextElement();
         return saRet;
@@ -220,7 +220,7 @@ public class StringUtil {
                 break;
             iIndexNum++;
         }
-        Vector vStore = new Vector();
+        Vector<String> vStore = new Vector<>();
         String sub = sReplace.substring(0, iIndex[0]);
         if (sub != null)
             vStore.add(sub);
@@ -513,7 +513,7 @@ public class StringUtil {
     }
 
     public static Date formateDate(String dateString, String hourStr, String minStr) {
-        Date result = null;
+       // Date result = null;
         Calendar calendar = Calendar.getInstance();
         int year = Integer.parseInt(dateString.substring(0, 4));
         int month = Integer.parseInt(dateString.substring(5, 7));
@@ -618,17 +618,19 @@ public class StringUtil {
         return result;
     }
 
+    @SuppressWarnings("rawtypes")
     public static String log2String(HashMap hashMap) {
         String result = "";
         Object[] keyList = hashMap.keySet().toArray();
         for (int i = 0; i < keyList.length; i++) {
             String keyName = keyList[i] == null ? "" : keyList[i].toString();
-            String keyValue = hashMap.get(keyName) == null ? "" : hashMap.get(keyName).toString();
+            //String keyValue = hashMap.get(keyName) == null ? "" : hashMap.get(keyName).toString();
             result += keyName + ":" + hashMap.get(keyList[i].toString()) + "\n";
         }
         return result;
     }
 
+    @SuppressWarnings("rawtypes")
     public static String log2ContentName(HashMap hashMap) {
         String result = "";
         if (hashMap.get("Content Name") != null) {
@@ -809,7 +811,7 @@ public class StringUtil {
         if (values == null || values.size() == 0)
             return "";
         String temp[] = new String[values.size()];
-        values.toArray(temp);
+       // values.toArray(temp);
         return contactStr(temp, delimiter);
         // // StringBuffer sb=new StringBuffer();
         // // for (int i=0;i<values.size();i++)
@@ -931,7 +933,7 @@ public class StringUtil {
      * @param paraParmsList
      * @return
      */
-    private String GetFullConstants(String paraString, String[] paraParmsList) {
+/*    private String GetFullConstants(String paraString, String[] paraParmsList) {
         String result = paraString;
 
         for (int i = 0; i < paraParmsList.length; i++) {
@@ -939,7 +941,7 @@ public class StringUtil {
         }
 
         return result;
-    }
+    }*/
 
     /**
      * convert IP addr (such as 192.168.10.21) to long (192168010021) Some time,
@@ -1099,7 +1101,7 @@ public class StringUtil {
     public static String getURLMainDomain(String url) {
         String svr = url;
         boolean isFullURL = false;
-        String METHODNAME = "getMainDomainString";
+      //  String METHODNAME = "getMainDomainString";
         try {
             // decode url, if the url is encoded
             svr = URLDecoder.decode(url, "UTF-8");
@@ -1208,7 +1210,7 @@ public class StringUtil {
      * @return
      */
     public static Date convertTimeStampToDate(Timestamp timestamp) {
-        String methodName = "convertStringToTimeStamp";
+     //   String methodName = "convertStringToTimeStamp";
         if (timestamp == null) {
             return null;
         }

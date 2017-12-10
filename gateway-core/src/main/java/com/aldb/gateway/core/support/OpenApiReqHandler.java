@@ -16,7 +16,6 @@ import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
 import com.aldb.gateway.service.ApiInterfaceService;
 import com.aldb.gateway.service.CacheService;
 import com.aldb.gateway.service.entity.ApiInfo;
-import com.aldb.gateway.util.UrlUtil;
 
 public class OpenApiReqHandler extends AbstractOpenApiHandler {
 

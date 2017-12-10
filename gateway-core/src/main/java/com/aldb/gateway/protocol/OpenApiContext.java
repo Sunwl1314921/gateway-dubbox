@@ -14,6 +14,7 @@ import org.apache.commons.chain.Context;
  * @author Administrator
  *
  */
+@SuppressWarnings("rawtypes")
 public class OpenApiContext extends HashMap implements Context {
 
     /**

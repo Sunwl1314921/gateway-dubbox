@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Deprecated
 public class ApiHttpUtil {
-    private static final int TIME_OUT_MILL_SEC = 15000;
+  //  private static final int TIME_OUT_MILL_SEC = 15000;
 
     /**
      * 发送post请求工具方法

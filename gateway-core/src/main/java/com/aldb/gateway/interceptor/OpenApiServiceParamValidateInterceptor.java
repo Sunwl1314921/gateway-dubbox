@@ -98,6 +98,7 @@ public class OpenApiServiceParamValidateInterceptor extends AbstractOpenApiValid
 
     }
 
+    @SuppressWarnings("rawtypes")
     private Map<String, String> extractThdUrlParams(HttpServletRequest request) {
         Map<String, String> urlParams = new HashMap<String, String>();
         Map<String, String[]> orignalUrlParams = request.getParameterMap();

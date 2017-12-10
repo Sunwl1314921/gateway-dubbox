@@ -7,7 +7,6 @@ import org.apache.commons.chain.Context;
 import org.apache.commons.lang3.StringUtils;
 
 import com.aldb.gateway.common.OpenApiHttpRequestBean;
-import com.aldb.gateway.common.resp.CommonResponse;
 import com.aldb.gateway.core.AbstractOpenApiHandler;
 import com.aldb.gateway.core.OpenApiRouteBean;
 import com.aldb.gateway.protocol.OpenApiContext;
@@ -89,13 +88,13 @@ public class OpenApiReqAdapter extends AbstractOpenApiHandler {
         this.cacheService = cacheService;
     }
 
-    private void setError(String errorCode, String errMsg, OpenApiHttpRequestBean requestBean) {
+ /*   private void setError(String errorCode, String errMsg, OpenApiHttpRequestBean requestBean) {
         CommonResponse<String> r = new CommonResponse<String>(false);
         r.setErrorCode(errorCode);
         r.setErrorMsg(errMsg);
         requestBean.setPrintStr(r.toString());
     }
-
+*/
     private void validateParam(OpenApiHttpRequestBean requestBean) {
         /*
          * String appId = requestBean.getAppId(); if
