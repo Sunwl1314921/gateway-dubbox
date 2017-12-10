@@ -3,7 +3,7 @@
  */
 package com.aldb.gateway.service;
 
-import com.aldb.gateway.service.entity.ApiInterface;
+import com.aldb.gateway.service.entity.ApiInfo;
 
 /**
  * @author Administrator
@@ -17,7 +17,7 @@ public interface ApiInterfaceService {
      * @param version
      * @return
      */
-    ApiInterface queryApiInterfaceByApiId(String apiId,String version); //这个接口方法暂定两个
+    ApiInfo queryApiInterfaceByApiId(String apiId,String version); //这个接口方法暂定两个
     
     
 }

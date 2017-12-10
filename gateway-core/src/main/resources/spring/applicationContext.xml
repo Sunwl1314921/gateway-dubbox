@@ -99,19 +99,22 @@
 	<!-- class="com.aldb.gateway.service.support.TestApiInterfaceServiceImpl" 
 		/> -->
 
-	<bean id="apiInterfaceServiceImpl"
+
+	<bean id="apiInterfaceServiceImpl" class="com.aldb.gateway.service.support.TestApiInterfaceServiceImpl" />
+	
+	<!-- <bean id="apiInterfaceServiceImpl"
 		class="com.aldb.gateway.service.support.ZkApiInterfaceServiceImpl"
 		init-method="init">
 		<property name="rootPath" value="${zk.rootpath}"></property>
 		<property name="zkServers" value="${zk.zkservers}"></property>
-	</bean>
+	</bean> -->
 
-	<!-- 虚拟服务注入注册中心 -->
+	<!-- 虚拟服务注入注册中心 
 	<bean class="com.aldb.gateway.service.support.DefaultVirtualServiceImpl" init-method="init">
 		<property name="rootPath" value="${virtual.zk.rootpath}"></property>
 		<property name="zkServers" value="${virtual.zk.zkservers}"></property>
 		<property name="context" value="${proj.contextPath}"></property>
 		<property name="ip" value="${virtual.ip}"></property>
 		<property name="port" value="${virtual.port}"></property>
-	</bean>
+	</bean>-->
 </beans>

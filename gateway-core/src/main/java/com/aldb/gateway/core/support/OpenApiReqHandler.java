@@ -15,7 +15,7 @@ import com.aldb.gateway.protocol.OpenApiContext;
 import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
 import com.aldb.gateway.service.ApiInterfaceService;
 import com.aldb.gateway.service.CacheService;
-import com.aldb.gateway.service.entity.ApiInterface;
+import com.aldb.gateway.service.entity.ApiInfo;
 import com.aldb.gateway.util.UrlUtil;
 
 public class OpenApiReqHandler extends AbstractOpenApiHandler {
@@ -81,7 +81,7 @@ public class OpenApiReqHandler extends AbstractOpenApiHandler {
 
         } else if (CommonCodeConstants.API_SERVICE_KEY.equals(operationType)) {
             logger.info(String.format("{serviceId:%s ,version:%s }", bean.getApiId(), bean.getVersion()));
-            ApiInterface apiInfo = apiInterfaceService.queryApiInterfaceByApiId(bean.getApiId(), bean.getVersion());
+            ApiInfo apiInfo = apiInterfaceService.queryApiInterfaceByApiId(bean.getApiId(), bean.getVersion());
 
             if (apiInfo == null) {
                 return String.format("this apiId=%s,version=%s has off line,please use another one", bean.getApiId(),
@@ -89,6 +89,9 @@ public class OpenApiReqHandler extends AbstractOpenApiHandler {
             }
             apiInfo.setTargetUrl(bean.getTargetUrl());
             apiInfo.setRequestMethod(bean.getRequestMethod());
+            {
+                bean.getReqHeader().put("host", apiInfo.getPort()==null?apiInfo.getHostAddress():apiInfo.getHostAddress()+":"+apiInfo.getPort());
+            }
             if (CommonCodeConstants.REQUEST_METHOD.GET.name().equalsIgnoreCase(requestMethod)) { // get请求
                 String url = apiInfo.getUrl();
                 //url = UrlUtil.dealUrl(url, bean.getThdApiUrlParams());

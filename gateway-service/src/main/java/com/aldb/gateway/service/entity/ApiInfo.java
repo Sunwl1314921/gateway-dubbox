@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Administrator
  *
  */
-public class ApiInterface implements Serializable {
+public class ApiInfo implements Serializable {
 
     /**
      * 

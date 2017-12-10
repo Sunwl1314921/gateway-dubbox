@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.aldb.gateway.common.util.CommonCodeConstants;
 import com.aldb.gateway.service.ApiInterfaceService;
 import com.aldb.gateway.service.LoadBalanceService;
-import com.aldb.gateway.service.entity.ApiInterface;
+import com.aldb.gateway.service.entity.ApiInfo;
 
 /**
  * @author Administrator
@@ -23,11 +23,11 @@ import com.aldb.gateway.service.entity.ApiInterface;
 public class ZkApiInterfaceServiceImpl implements ApiInterfaceService {
 
     @Override
-    public ApiInterface queryApiInterfaceByApiId(String apiId, String version) {
+    public ApiInfo queryApiInterfaceByApiId(String apiId, String version) {
         List<String> sets = hosts.get(apiId);
         if (sets != null) {
             String hostAddress = loadBalancerService.chooseOne(apiId, version, sets);
-            ApiInterface apiInterface = new ApiInterface();
+            ApiInfo apiInterface = new ApiInfo();
             apiInterface.setApiId(apiId);
             apiInterface.setProtocol(CommonCodeConstants.HTTP);
             apiInterface.setHostAddress(hostAddress);
