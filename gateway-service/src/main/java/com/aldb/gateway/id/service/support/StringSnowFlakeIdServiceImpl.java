@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.id.service.support;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.aldb.gateway.common.util.NetworkUtil;
-import com.aldb.gateway.service.IdService;
+import com.aldb.gateway.id.service.IdService;
 
 /**
  * @author sunff

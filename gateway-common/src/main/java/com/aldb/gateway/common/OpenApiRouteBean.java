@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.aldb.gateway.core;
+package com.aldb.gateway.common;
 
 import java.io.Serializable;
 import java.util.Map;

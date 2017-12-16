@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.aldb.gateway.service;
+package com.aldb.gateway.auth.service;
 
 import com.aldb.gateway.common.OpenApiHttpRequestBean;
 

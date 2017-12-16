@@ -6,12 +6,12 @@ import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
 import org.apache.commons.lang3.StringUtils;
 
+import com.aldb.gateway.auth.service.AuthenticationService;
 import com.aldb.gateway.common.OpenApiHttpRequestBean;
+import com.aldb.gateway.common.OpenApiRouteBean;
 import com.aldb.gateway.core.AbstractOpenApiHandler;
-import com.aldb.gateway.core.OpenApiRouteBean;
 import com.aldb.gateway.protocol.OpenApiContext;
 import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
-import com.aldb.gateway.service.AuthenticationService;
 import com.aldb.gateway.service.CacheService;
 
 public class OpenApiReqAdapter extends AbstractOpenApiHandler {

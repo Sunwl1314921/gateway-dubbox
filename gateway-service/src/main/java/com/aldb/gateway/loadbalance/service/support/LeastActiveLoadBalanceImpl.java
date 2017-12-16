@@ -1,11 +1,12 @@
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.loadbalance.service.support;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.aldb.gateway.service.LoadBalanceService;
+import com.aldb.gateway.common.OpenApiRouteBean;
+import com.aldb.gateway.loadbalance.service.LoadBalanceService;
 
 /**
  * 最少活动的
@@ -20,7 +21,7 @@ public class LeastActiveLoadBalanceImpl implements LoadBalanceService {
     private final Random random = new Random();
 
     @Override
-    public String chooseOne(String context, String version, List<String> hosts) {
+    public String chooseOne(OpenApiRouteBean bean, List<String> hosts) {
         if (hosts == null || hosts.size() == 0) {
             return null;
         }
@@ -32,7 +33,7 @@ public class LeastActiveLoadBalanceImpl implements LoadBalanceService {
 
         for (int i = 0; i < length; i++) {
             String invoker = hosts.get(i);
-            int active = getActive(context, invoker); // 活跃数
+            int active = getActive(bean.getApiId(), invoker); // 活跃数
 
             if (leastActive == -1 || active < leastActive) { // 发现更小的活跃数，重新开始
                 leastActive = active; // 记录最小活跃数
@@ -53,7 +54,7 @@ public class LeastActiveLoadBalanceImpl implements LoadBalanceService {
             // 如果活动数都相等，则随机分配
             host = hosts.get(leastIndexs[random.nextInt(leastCount)]);
         }
-        addActive(context, host);
+        addActive(bean.getApiId(), host);
         return host;
 
     }

@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.id.service.support;
 
 import org.springframework.beans.factory.InitializingBean;
 
 import com.aldb.gateway.common.util.NetworkUtil;
-import com.aldb.gateway.service.IdService;
+import com.aldb.gateway.id.service.IdService;
 import com.sohu.idcenter.IdWorker;
 
 /**

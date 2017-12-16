@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.aldb.gateway.service;
+package com.aldb.gateway.id.service;
 
 /**
  * @author Administrator

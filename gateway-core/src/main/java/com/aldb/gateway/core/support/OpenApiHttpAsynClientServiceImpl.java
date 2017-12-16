@@ -85,7 +85,11 @@ import org.apache.http.util.EntityUtils;
 import com.aldb.gateway.core.OpenApiHttpClientService;
 
 /**
- * @author 如果需要实现真正的异步，则前面调用部分也需要重构，这个工作量太大，暂搁置
+ * @author 如果需要实现真正的异步，则前面调用部分也需要重构，这个工作量太大。
+ * 
+ * 所以在这里调用还需要进行异步变同步，当前请求线程需要等待相应的响应返回值，
+ * 并没有提高性，所以在生产应用中，一般情况网关与后端的服务处于同一个网段或机房内，
+ * 使用同步调用可能更好。
  * 
  */
 public class OpenApiHttpAsynClientServiceImpl implements OpenApiHttpClientService {

@@ -17,9 +17,9 @@ import com.aldb.gateway.common.util.CommonCodeConstants;
 import com.aldb.gateway.handler.OpenApiAcceptHandler;
 import com.aldb.gateway.handler.OpenApiHandlerExecuteTemplate;
 import com.aldb.gateway.handler.ThreadPoolHandler;
+import com.aldb.gateway.id.service.IdService;
 import com.aldb.gateway.protocol.OpenApiHttpReqTask;
 import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
-import com.aldb.gateway.service.IdService;
 import com.aldb.gateway.util.OpenApiResponseUtils;
 import com.alibaba.fastjson.JSON;
 

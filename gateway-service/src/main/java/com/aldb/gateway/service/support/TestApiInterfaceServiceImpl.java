@@ -3,6 +3,7 @@
  */
 package com.aldb.gateway.service.support;
 
+import com.aldb.gateway.common.OpenApiRouteBean;
 import com.aldb.gateway.service.ApiInterfaceService;
 import com.aldb.gateway.service.entity.ApiInfo;
 
@@ -13,7 +14,7 @@ import com.aldb.gateway.service.entity.ApiInfo;
 public class TestApiInterfaceServiceImpl implements ApiInterfaceService{
 
     @Override
-    public ApiInfo queryApiInterfaceByApiId(String apiId, String version) {
+    public ApiInfo queryApiInterfaceByApiId(OpenApiRouteBean bean) {
         
         
         ApiInfo a= new ApiInfo();

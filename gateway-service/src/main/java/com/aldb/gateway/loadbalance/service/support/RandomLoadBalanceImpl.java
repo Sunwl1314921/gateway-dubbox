@@ -1,12 +1,13 @@
 /**
  * 
  */
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.loadbalance.service.support;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.aldb.gateway.service.LoadBalanceService;
+import com.aldb.gateway.common.OpenApiRouteBean;
+import com.aldb.gateway.loadbalance.service.LoadBalanceService;
 
 /**
  * @author Administrator
@@ -15,7 +16,7 @@ import com.aldb.gateway.service.LoadBalanceService;
 public class RandomLoadBalanceImpl implements LoadBalanceService {
 
     @Override
-    public String chooseOne(String apiId, String version,List<String> set) {
+    public String chooseOne(OpenApiRouteBean bean,List<String> set) {
 
         return getRandomElement(set);
     }

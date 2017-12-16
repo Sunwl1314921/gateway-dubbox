@@ -1,7 +1,7 @@
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.auth.service.support;
 
+import com.aldb.gateway.auth.service.AuthenticationService;
 import com.aldb.gateway.common.OpenApiHttpRequestBean;
-import com.aldb.gateway.service.AuthenticationService;
 
 public class DefaultAuthenticationServiceImpl implements AuthenticationService {
 

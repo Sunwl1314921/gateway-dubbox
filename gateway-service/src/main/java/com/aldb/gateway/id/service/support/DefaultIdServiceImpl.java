@@ -1,11 +1,11 @@
 /**
  * 
  */
-package com.aldb.gateway.service.support;
+package com.aldb.gateway.id.service.support;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.aldb.gateway.service.IdService;
+import com.aldb.gateway.id.service.IdService;
 
 /**
  * @author Administrator

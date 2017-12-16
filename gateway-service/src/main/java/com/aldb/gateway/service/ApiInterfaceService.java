@@ -3,6 +3,7 @@
  */
 package com.aldb.gateway.service;
 
+import com.aldb.gateway.common.OpenApiRouteBean;
 import com.aldb.gateway.service.entity.ApiInfo;
 
 /**
@@ -17,7 +18,7 @@ public interface ApiInterfaceService {
      * @param version
      * @return
      */
-    ApiInfo queryApiInterfaceByApiId(String apiId,String version); //这个接口方法暂定两个
+    ApiInfo queryApiInterfaceByApiId(OpenApiRouteBean bean); //这个接口方法暂定两个
     
     
 }

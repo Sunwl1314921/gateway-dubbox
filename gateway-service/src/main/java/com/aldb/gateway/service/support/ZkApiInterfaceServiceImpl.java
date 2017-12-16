@@ -11,9 +11,11 @@ import org.I0Itec.zkclient.ZkClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.aldb.gateway.common.OpenApiRouteBean;
 import com.aldb.gateway.common.util.CommonCodeConstants;
+import com.aldb.gateway.loadbalance.service.LoadBalanceService;
+import com.aldb.gateway.loadbalance.service.support.RandomLoadBalanceImpl;
 import com.aldb.gateway.service.ApiInterfaceService;
-import com.aldb.gateway.service.LoadBalanceService;
 import com.aldb.gateway.service.entity.ApiInfo;
 
 /**
@@ -23,12 +25,12 @@ import com.aldb.gateway.service.entity.ApiInfo;
 public class ZkApiInterfaceServiceImpl implements ApiInterfaceService {
 
     @Override
-    public ApiInfo queryApiInterfaceByApiId(String apiId, String version) {
-        List<String> sets = hosts.get(apiId);
+    public ApiInfo queryApiInterfaceByApiId(OpenApiRouteBean bean) {
+        List<String> sets = hosts.get(bean.getApiId());
         if (sets != null) {
-            String hostAddress = loadBalancerService.chooseOne(apiId, version, sets);
+            String hostAddress = loadBalancerService.chooseOne(bean, sets);
             ApiInfo apiInterface = new ApiInfo();
-            apiInterface.setApiId(apiId);
+            apiInterface.setApiId(bean.getApiId());
             apiInterface.setProtocol(CommonCodeConstants.HTTP);
             apiInterface.setHostAddress(hostAddress);
             return apiInterface;

@@ -5,12 +5,12 @@ import org.apache.commons.chain.Context;
 import org.apache.commons.lang3.StringUtils;
 
 import com.aldb.gateway.common.OpenApiHttpRequestBean;
+import com.aldb.gateway.common.OpenApiRouteBean;
 import com.aldb.gateway.common.exception.OauthErrorEnum;
 import com.aldb.gateway.common.exception.OpenApiException;
 import com.aldb.gateway.common.util.CommonCodeConstants;
 import com.aldb.gateway.core.AbstractOpenApiHandler;
 import com.aldb.gateway.core.OpenApiHttpClientService;
-import com.aldb.gateway.core.OpenApiRouteBean;
 import com.aldb.gateway.protocol.OpenApiContext;
 import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
 import com.aldb.gateway.service.ApiInterfaceService;
@@ -80,7 +80,7 @@ public class OpenApiReqHandler extends AbstractOpenApiHandler {
 
         } else if (CommonCodeConstants.API_SERVICE_KEY.equals(operationType)) {
             logger.info(String.format("{serviceId:%s ,version:%s }", bean.getApiId(), bean.getVersion()));
-            ApiInfo apiInfo = apiInterfaceService.queryApiInterfaceByApiId(bean.getApiId(), bean.getVersion());
+            ApiInfo apiInfo = apiInterfaceService.queryApiInterfaceByApiId(bean);
 
             if (apiInfo == null) {
                 return String.format("this apiId=%s,version=%s has off line,please use another one", bean.getApiId(),
