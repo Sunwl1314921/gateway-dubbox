@@ -27,7 +27,7 @@ import com.alibaba.fastjson.JSON;
  * @author Administrator
  * 
  */
-
+@Deprecated
 public class OpenApiAcceptHandlerImpl implements OpenApiAcceptHandler, ApplicationContextAware {
 
     private static Log logger = LogFactory.getLog(OpenApiAcceptHandlerImpl.class);

@@ -32,7 +32,7 @@ import com.alibaba.fastjson.JSON;
  */
 public class AsynOpenApiAcceptHandlerImpl implements OpenApiAcceptHandler, ApplicationContextAware {
 
-    private ThreadPoolTaskExecutor taskExecutor;
+    private ThreadPoolTaskExecutor taskExecutor; //业务处理线程池，它的大小决定了业务吞吐量
     private IdService idService;
 
     public void setTaskExecutor(ThreadPoolTaskExecutor taskExecutor) {

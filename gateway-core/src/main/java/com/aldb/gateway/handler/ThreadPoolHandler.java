@@ -9,6 +9,7 @@ import com.aldb.gateway.protocol.AbstractTask;
  * @author Administrator
  *
  */
+@Deprecated
 public interface ThreadPoolHandler {
 
     

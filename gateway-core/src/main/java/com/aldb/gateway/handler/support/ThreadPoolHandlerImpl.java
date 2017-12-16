@@ -20,6 +20,7 @@ import com.aldb.gateway.protocol.OpenApiHttpSessionBean;
  * @author Administrator
  * 
  */
+@Deprecated
 public class ThreadPoolHandlerImpl implements ThreadPoolHandler {
 
     private static Log logger = LogFactory.getLog(ThreadPoolHandlerImpl.class);
