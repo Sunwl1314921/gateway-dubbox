@@ -92,22 +92,23 @@
 
 
 	<!-- 不依赖于外部系统即api的服务提供由硬编码完成 -->
-	<bean id="idService" class="com.aldb.gateway.service.support.DefaultIdServiceImpl" />
+	<bean id="idService" class="com.aldb.gateway.id.service.support.DefaultIdServiceImpl" />
 	<bean id="authenticationService"
-		class="com.aldb.gateway.service.support.DefaultAuthenticationServiceImpl" />
+		class="com.aldb.gateway.auth.service.support.DefaultAuthenticationServiceImpl" />
 	<!-- <bean id="apiInterfaceServiceImpl" -->
 	<!-- class="com.aldb.gateway.service.support.TestApiInterfaceServiceImpl" 
 		/> -->
 
 
-	<bean id="apiInterfaceServiceImpl" class="com.aldb.gateway.service.support.TestApiInterfaceServiceImpl" />
+<!-- 	<bean id="apiInterfaceServiceImpl" class="com.aldb.gateway.service.support.TestApiInterfaceServiceImpl" /> -->
 	
-	<!-- <bean id="apiInterfaceServiceImpl"
+	<!-- -->
+	<bean id="apiInterfaceServiceImpl"
 		class="com.aldb.gateway.service.support.ZkApiInterfaceServiceImpl"
 		init-method="init">
 		<property name="rootPath" value="${zk.rootpath}"></property>
 		<property name="zkServers" value="${zk.zkservers}"></property>
-	</bean> -->
+	</bean> 
 
 	<!-- 虚拟服务注入注册中心 
 	<bean class="com.aldb.gateway.service.support.DefaultVirtualServiceImpl" init-method="init">

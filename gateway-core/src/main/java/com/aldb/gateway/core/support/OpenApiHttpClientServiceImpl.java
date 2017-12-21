@@ -147,6 +147,10 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
         String body = "";
         org.apache.http.client.methods.HttpPost httpPost = new org.apache.http.client.methods.HttpPost(url);
         for(Map.Entry<String, String> entry:headParams.entrySet()) {
+            //org.apache.http.ProtocolException: Content-Length header already present
+            if(entry.getKey().equals("content-length")){
+                continue;
+            }
             httpPost.setHeader(entry.getKey(), entry.getValue());
         }
         httpPost.setEntity(new StringEntity(reqData, "utf-8"));
@@ -179,6 +183,9 @@ public class OpenApiHttpClientServiceImpl implements OpenApiHttpClientService {
         String body = "";
         org.apache.http.client.methods.HttpGet httpGet = new org.apache.http.client.methods.HttpGet(webUrl);
         for(Map.Entry<String, String> entry:headParams.entrySet()) {
+            if(entry.getKey().equals("content-length")){
+                continue;
+            }
             httpGet.setHeader(entry.getKey(), entry.getValue());
         }
         try {
